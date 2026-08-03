@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF Auto Downloader</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <h1>PDF Auto Downloader</h1>
+          <p id="pageStatus" class="status">準備掃描目前頁面</p>
+        </div>
+        <button id="rescanButton" class="icon-button" type="button" title="重新掃描">↻</button>
+      </header>
+
+      <section class="controls" aria-label="下載設定">
+        <label>
+          <span>篩選</span>
+          <select id="typeFilter">
+            <option value="all">全部</option>
+            <option value="PDF">PDF</option>
+            <option value="PPTX">PPTX</option>
+            <option value="DOC">DOC</option>
+            <option value="DOCX">DOCX</option>
+          </select>
+        </label>
+
+        <label>
+          <span>命名規則</span>
+          <select id="namingRule">
+            <option value="original">原始檔名</option>
+            <option value="course-original">課程名稱 + 原始檔名</option>
+            <option value="sequence-display">流水號 + 顯示名稱</option>
+            <option value="course-sequence-display">課程名稱 / 流水號_顯示名稱</option>
+          </select>
+        </label>
+
+        <label class="folder-field">
+          <span>下載子資料夾</span>
+          <input id="baseFolder" type="text" value="NCCU Moodle" placeholder="例如 NCCU Moodle">
+        </label>
+      </section>
+
+      <section class="actions" aria-label="批次操作">
+        <button id="selectAllButton" type="button">全選可下載</button>
+        <button id="clearSelectionButton" type="button">清除</button>
+        <button id="downloadButton" class="primary" type="button">下載已勾選</button>
+      </section>
+
+      <section class="summary">
+        <span id="courseTitle">課程：尚未取得</span>
+        <span id="fileCount">0 個項目</span>
+      </section>
+
+      <section class="table-wrap" aria-label="檔案清單">
+        <table>
+          <thead>
+            <tr>
+              <th class="check-col"></th>
+              <th>顯示名稱</th>
+              <th>類型</th>
+              <th>來源 URL</th>
+              <th>推測檔名</th>
+            </tr>
+          </thead>
+          <tbody id="fileList">
+            <tr>
+              <td colspan="5" class="empty">尚未掃描</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="../utils/filename.js"></script>
+    <script src="../utils/moodle-detector.js"></script>
+    <script src="../utils/dedupe.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

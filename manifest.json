@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "PDF Auto Downloader",
+  "version": "0.1.0",
+  "description": "Scan normal pages and Moodle course pages for PDF, PPTX, DOC, and DOCX files, then batch download accessible files.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "PDF Auto Downloader"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "utils/filename.js",
+        "utils/moodle-detector.js",
+        "utils/dedupe.js",
+        "content/scanner.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
