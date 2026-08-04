@@ -21,6 +21,7 @@
     elements.pageStatus = document.getElementById("pageStatus");
     elements.rescanButton = document.getElementById("rescanButton");
     elements.typeFilter = document.getElementById("typeFilter");
+    elements.nameFilter = document.getElementById("nameFilter");
     elements.namingRule = document.getElementById("namingRule");
     elements.baseFolder = document.getElementById("baseFolder");
     elements.selectAllButton = document.getElementById("selectAllButton");
@@ -32,6 +33,7 @@
 
     elements.rescanButton.addEventListener("click", scanCurrentTab);
     elements.typeFilter.addEventListener("change", render);
+    elements.nameFilter.addEventListener("input", render);
     elements.namingRule.addEventListener("change", render);
     elements.baseFolder.addEventListener("input", render);
     elements.selectAllButton.addEventListener("click", selectAllDownloadable);
@@ -122,10 +124,16 @@
   }
 
   function getFilteredFiles() {
-    const filter = elements.typeFilter.value;
-    if (filter === "all") return state.files;
-    return state.files.filter(function matchType(file) {
-      return file.fileType === filter;
+    const typeValue = elements.typeFilter.value;
+    const nameQuery = elements.nameFilter.value.trim().toLowerCase();
+
+    return state.files.filter(function matchFilters(file) {
+      if (typeValue !== "all" && file.fileType !== typeValue) return false;
+      if (nameQuery) {
+        const haystack = ((file.displayName || "") + " " + (file.guessedFilename || "")).toLowerCase();
+        if (!haystack.includes(nameQuery)) return false;
+      }
+      return true;
     });
   }
 
