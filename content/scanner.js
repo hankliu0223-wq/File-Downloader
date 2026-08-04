@@ -1,12 +1,12 @@
 (function attachContentScanner(global) {
   "use strict";
 
-  if (global.__pdfAutoDownloaderScanner) {
-    global.__pdfAutoDownloaderScanner.rescanSoon();
+  if (global.__fileSweepScanner) {
+    global.__fileSweepScanner.rescanSoon();
     return;
   }
 
-  const root = global.PdfAutoDownloader || (global.PdfAutoDownloader = {});
+  const root = global.FileSweep || (global.FileSweep = {});
   const Filename = root.filename;
   const Moodle = root.moodle;
   const Dedupe = root.dedupe;
@@ -167,7 +167,7 @@
     if (typeof chrome === "undefined" || !chrome.runtime || !chrome.runtime.sendMessage) return;
 
     chrome.runtime.sendMessage({
-      type: "PAD_PAGE_CHANGED",
+      type: "FS_PAGE_CHANGED",
       pageUrl: location.href,
       candidateCount: cachedResult ? cachedResult.candidates.length : 0
     }, function ignoreMissingPopup() {
@@ -187,7 +187,7 @@
   }
 
   function handleMessage(message, _sender, sendResponse) {
-    if (!message || message.type !== "PAD_SCAN_NOW") return false;
+    if (!message || message.type !== "FS_SCAN_NOW") return false;
 
     try {
       sendResponse(scanDom());
@@ -230,7 +230,7 @@
   startObserver();
   rescanSoon();
 
-  global.__pdfAutoDownloaderScanner = {
+  global.__fileSweepScanner = {
     getCachedResult: function getCachedResult() {
       return cachedResult || scanDom();
     },

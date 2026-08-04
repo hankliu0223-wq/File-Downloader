@@ -1,7 +1,7 @@
 (function attachFilenameUtils(global) {
   "use strict";
 
-  const root = global.PdfAutoDownloader || (global.PdfAutoDownloader = {});
+  const root = global.FileSweep || (global.FileSweep = {});
 
   const TYPE_INFO = {
     PDF: {

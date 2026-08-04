@@ -1,7 +1,7 @@
 (function attachPopup(global) {
   "use strict";
 
-  const root = global.PdfAutoDownloader;
+  const root = global.FileSweep;
   const Filename = root.filename;
 
   const state = {
@@ -65,7 +65,7 @@
       setStatus("找到候選連結，正在解析 Moodle resource 與檔案標頭...");
 
       const resolveResult = await chromeSendMessage({
-        type: "PAD_RESOLVE_CANDIDATES",
+        type: "FS_RESOLVE_CANDIDATES",
         candidates: scanResult.candidates || [],
         context: {
           pageUrl: scanResult.pageUrl || tab.url,
@@ -98,10 +98,10 @@
 
   async function scanTabWithFallback(tabId) {
     try {
-      return await chromeSendTabMessage(tabId, { type: "PAD_SCAN_NOW" });
+      return await chromeSendTabMessage(tabId, { type: "FS_SCAN_NOW" });
     } catch (firstError) {
       await injectContentScripts(tabId);
-      return chromeSendTabMessage(tabId, { type: "PAD_SCAN_NOW" });
+      return chromeSendTabMessage(tabId, { type: "FS_SCAN_NOW" });
     }
   }
 
@@ -274,7 +274,7 @@
 
     try {
       const response = await chromeSendMessage({
-        type: "PAD_DOWNLOAD_FILES",
+        type: "FS_DOWNLOAD_FILES",
         files: filesToDownload
       });
 
@@ -296,7 +296,7 @@
   }
 
   function handleRuntimeMessage(message, sender) {
-    if (!message || message.type !== "PAD_PAGE_CHANGED") return false;
+    if (!message || message.type !== "FS_PAGE_CHANGED") return false;
     if (!sender.tab || sender.tab.id !== state.tabId) return false;
 
     setStatus("頁面內容已更新，正在重新掃描...");

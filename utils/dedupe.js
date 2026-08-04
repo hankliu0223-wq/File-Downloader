@@ -1,7 +1,7 @@
 (function attachDedupeUtils(global) {
   "use strict";
 
-  const root = global.PdfAutoDownloader || (global.PdfAutoDownloader = {});
+  const root = global.FileSweep || (global.FileSweep = {});
   const Moodle = root.moodle || {};
   const Filename = root.filename || {};
 

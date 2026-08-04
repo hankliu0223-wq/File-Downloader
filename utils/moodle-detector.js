@@ -1,7 +1,7 @@
 (function attachMoodleDetector(global) {
   "use strict";
 
-  const root = global.PdfAutoDownloader || (global.PdfAutoDownloader = {});
+  const root = global.FileSweep || (global.FileSweep = {});
   const Filename = root.filename || {};
 
   function getUrlObject(urlString, baseUrl) {

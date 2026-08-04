@@ -3,7 +3,7 @@ importScripts("../utils/filename.js", "../utils/moodle-detector.js", "../utils/d
 (function attachServiceWorker(global) {
   "use strict";
 
-  const root = global.PdfAutoDownloader;
+  const root = global.FileSweep;
   const Filename = root.filename;
   const Moodle = root.moodle;
   const Dedupe = root.dedupe;
@@ -12,7 +12,7 @@ importScripts("../utils/filename.js", "../utils/moodle-detector.js", "../utils/d
   chrome.runtime.onMessage.addListener(function handleMessage(message, sender, sendResponse) {
     if (!message || !message.type) return false;
 
-    if (message.type === "PAD_RESOLVE_CANDIDATES") {
+    if (message.type === "FS_RESOLVE_CANDIDATES") {
       resolveCandidates(message.candidates || [], message.context || {})
         .then(function sendSuccess(files) {
           sendResponse({ ok: true, files });
@@ -23,7 +23,7 @@ importScripts("../utils/filename.js", "../utils/moodle-detector.js", "../utils/d
       return true;
     }
 
-    if (message.type === "PAD_DOWNLOAD_FILES") {
+    if (message.type === "FS_DOWNLOAD_FILES") {
       downloadFiles(message.files || [])
         .then(function sendDownloadSuccess(result) {
           sendResponse({ ok: true, result });
