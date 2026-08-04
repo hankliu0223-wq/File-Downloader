@@ -3,6 +3,12 @@
   "name": "FileSweep",
   "version": "0.1.0",
   "description": "掃描目前頁面（含 Moodle 課程頁）中的 PDF、PPTX、DOC、DOCX 檔案，一鍵批次下載。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": [
     "activeTab",
     "downloads",
@@ -18,7 +24,13 @@
   },
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "FileSweep"
+    "default_title": "FileSweep",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "content_scripts": [
     {
