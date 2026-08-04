@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "PDF Auto Downloader",
+  "name": "FileSweep",
   "version": "0.1.0",
-  "description": "Scan normal pages and Moodle course pages for PDF, PPTX, DOC, and DOCX files, then batch download accessible files.",
+  "description": "掃描目前頁面（含 Moodle 課程頁）中的 PDF、PPTX、DOC、DOCX 檔案，一鍵批次下載。",
   "permissions": [
     "activeTab",
     "downloads",
@@ -18,7 +18,7 @@
   },
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "PDF Auto Downloader"
+    "default_title": "FileSweep"
   },
   "content_scripts": [
     {
