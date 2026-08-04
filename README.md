@@ -1,5 +1,11 @@
 # FileSweep
 
+![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)
+![Manifest](https://img.shields.io/badge/Manifest-V3-5F6368)
+![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?logo=javascript&logoColor=black)
+![Moodle](https://img.shields.io/badge/Moodle-Supported-F98012?logo=moodle&logoColor=white)
+![Downloads API](https://img.shields.io/badge/Chrome-Downloads_API-34A853)
+
 > 一個專為一般網頁與 Moodle 課程頁設計的 Chrome 文件掃描與批次下載擴充功能。
 
 FileSweep 會掃描目前頁面中的文件連結，辨識可下載的 PDF、PPTX、DOC 與 DOCX 檔案，並提供檔名搜尋、類型篩選、自訂命名規則與一鍵批次下載功能。
