@@ -124,6 +124,12 @@ input {
   background: var(--accent-strong);
 }
 
+.hint {
+  margin: -6px 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .summary {
   display: flex;
   justify-content: space-between;
