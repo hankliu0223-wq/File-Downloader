@@ -62,7 +62,7 @@
       }
 
       state.courseTitle = scanResult.courseTitle || tab.title || "未命名頁面";
-      setStatus("找到候選連結，正在解析 Moodle resource 與檔案標頭...");
+      setStatus("找到候選連結，正在解析檔案標頭...");
 
       const resolveResult = await chromeSendMessage({
         type: "FS_RESOLVE_CANDIDATES",
