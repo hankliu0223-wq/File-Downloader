@@ -188,13 +188,16 @@
 
   function urlCell(url) {
     const cell = document.createElement("td");
+    if (!url) return cell;
+
     const link = document.createElement("a");
-    link.className = "truncate";
+    link.className = "link-icon";
     link.href = url;
     link.target = "_blank";
     link.rel = "noreferrer";
     link.title = url;
-    link.textContent = url;
+    link.textContent = "🔗";
+    link.setAttribute("aria-label", url);
     cell.appendChild(link);
     return cell;
   }

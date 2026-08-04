@@ -172,7 +172,7 @@ th {
 }
 
 td:nth-child(2) {
-  width: 190px;
+  width: 250px;
 }
 
 td:nth-child(3) {
@@ -180,11 +180,12 @@ td:nth-child(3) {
 }
 
 td:nth-child(4) {
-  width: 240px;
+  width: 48px;
+  text-align: center;
 }
 
 td:nth-child(5) {
-  width: 180px;
+  width: 260px;
 }
 
 .truncate {
@@ -194,6 +195,12 @@ td:nth-child(5) {
   color: inherit;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.link-icon {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .type-pill {
