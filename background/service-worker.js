@@ -318,7 +318,7 @@ importScripts("../utils/filename.js", "../utils/moodle-detector.js", "../utils/d
       folderId: candidate.folderId || Moodle.extractFolderId(candidate.sourceUrl),
       contentType: meta.contentType,
       contentDisposition: meta.contentDisposition,
-      courseTitle: context.courseTitle || "Course"
+      courseTitle: context.courseTitle || "未命名頁面"
     };
   }
 
@@ -339,7 +339,7 @@ importScripts("../utils/filename.js", "../utils/moodle-detector.js", "../utils/d
       resourceId: candidate.resourceId || Moodle.extractResourceId(candidate.sourceUrl || ""),
       folderId: candidate.folderId || Moodle.extractFolderId(candidate.sourceUrl || ""),
       errorReason: reason || "Needs manual confirmation.",
-      courseTitle: context.courseTitle || "Course"
+      courseTitle: context.courseTitle || "未命名頁面"
     };
   }
 

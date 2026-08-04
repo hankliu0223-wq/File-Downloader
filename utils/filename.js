@@ -272,7 +272,7 @@
     const file = data.file || {};
     const rule = data.rule || "original";
     const baseFolder = data.baseFolder ? sanitizeSegment(data.baseFolder, "") : "";
-    const courseTitle = sanitizeSegment(data.courseTitle || file.courseTitle || "Course", "Course");
+    const courseTitle = sanitizeSegment(data.courseTitle || file.courseTitle || "未命名頁面", "未命名頁面");
     const fileType = String(file.fileType || "").toUpperCase();
     const originalFilename = chooseFilename({
       url: file.downloadUrl || file.finalUrl || file.sourceUrl,

@@ -7,7 +7,7 @@
   const state = {
     tabId: null,
     pageUrl: "",
-    courseTitle: "Course",
+    courseTitle: "未命名頁面",
     files: [],
     selectedIds: new Set(),
     autoScanTimer: null
@@ -61,7 +61,7 @@
         throw new Error(scanResult && scanResult.error ? scanResult.error : "content script 無法回應。");
       }
 
-      state.courseTitle = scanResult.courseTitle || tab.title || "Course";
+      state.courseTitle = scanResult.courseTitle || tab.title || "未命名頁面";
       setStatus("找到候選連結，正在解析 Moodle resource 與檔案標頭...");
 
       const resolveResult = await chromeSendMessage({
@@ -131,7 +131,7 @@
 
   function render() {
     const files = getFilteredFiles();
-    elements.courseTitle.textContent = "課程：" + (state.courseTitle || "Course");
+    elements.courseTitle.textContent = "來源：" + (state.courseTitle || "未命名頁面");
     elements.fileCount.textContent = files.length + " 個項目";
 
     if (!files.length) {
